@@ -3,9 +3,9 @@
 'use strict';
 const KEY='lucasbarbershop-demo-v4';
 const defaults={version:4,services:[
-{id:'corte',name:'Corte masculino',minutes:40,price:null,description:'Corte clássico, degradê ou o estilo que combina com você.',image:'corte-finalizado'},
-{id:'barba',name:'Barba e bigode',minutes:30,price:null,description:'Acabamento e cuidado para barba e bigode.',image:'barba-precisao'},
-{id:'combo',name:'Cabelo e barba',minutes:70,price:null,description:'O cuidado completo em um único atendimento.',image:'corte-tesoura'}
+{id:'corte',name:'Corte masculino',minutes:40,price:null,description:'Corte masculino com acabamento.',image:'corte-finalizado'},
+{id:'barba',name:'Barba e bigode',minutes:30,price:null,description:'Barba e bigode.',image:'barba-precisao'},
+{id:'combo',name:'Cabelo e barba',minutes:70,price:null,description:'Corte e barba no mesmo horário.',image:'corte-tesoura'}
 ],barbers:[{id:'barber1',name:'Profissional 1'},{id:'barber2',name:'Profissional 2'},{id:'barber3',name:'Profissional 3'},{id:'barber4',name:'Profissional 4'}],bookings:[],bot:{active:false,mode:'manual',welcome:'Olá! Bem-vindo à Lucas Barbershop. Como podemos ajudar?',fallback:'Para marcar um horário, acesse a agenda no nosso site.'}};
 function load(){try{let value=localStorage.getItem(KEY);if(!value)return structuredClone(defaults);let parsed=JSON.parse(value);if(parsed.version!==4||!Array.isArray(parsed.services)||!Array.isArray(parsed.barbers)||!Array.isArray(parsed.bookings))return structuredClone(defaults);return parsed}catch(e){return structuredClone(defaults)}}
 function save(db){localStorage.setItem(KEY,JSON.stringify(db));window.dispatchEvent(new CustomEvent('lucas-demo-change'))}
